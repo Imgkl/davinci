@@ -15,7 +15,7 @@ import 'package:davinci/core/davinci_capture.dart';
 ```
 
 #### Pseudo code
-<img src ="https://i.ibb.co/tCgQpM3/carbon-1.png" width="450" height="450">
+<img src ="https://i.ibb.co/tCgQpM3/carbon-1.png" width="500" height="450">
 
 So by default the generated image name will be "davinci". But if you wish to change it, you can pass the image name in  DavinciCapture.click method
 ```
