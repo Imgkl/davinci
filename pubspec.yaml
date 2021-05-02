@@ -1,7 +1,7 @@
 name: davinci
 description: A flutter package to convert any widget to image.
 version: 0.0.1
-homepage:
+homepage: https://github.com/Imgkl/davinci
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
