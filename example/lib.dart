@@ -46,8 +46,7 @@ class _AppState extends State<App> {
             ),
             Padding(
               padding: const EdgeInsets.all(38.0),
-              child: RaisedButton(
-                color: Colors.black,
+              child: TextButton(
                 onPressed: () async {
                   ///4. pass the globalKey varible to DavinciCapture.click.
                   await DavinciCapture.click(imageKey);
