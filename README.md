@@ -1,7 +1,7 @@
 # Davinci
 <img src ="https://i.ibb.co/wJMkxM5/Oakbridge-Middle-School.png">
 <br>
-A flutter package to convert any widget to image.
+A simple flutter package to convert any widget to an image which can be used to share to other apps and chats.
 
 
 ## Preview
