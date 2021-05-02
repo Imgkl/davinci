@@ -2,7 +2,6 @@
 A flutter package to convert any widget to image.
 
 ## Preview
-<hr>
 <img src ="https://i.ibb.co/8bt4H43/ezgif-com-gif-maker.gif" width="250" height="500">
 
 ## Usage
@@ -20,6 +19,5 @@ So by default the generated image name will be "davinci". But if you wish to cha
 await DavinciCapture.click(imageKey, fileName: "Hello");
 ```
 
-
-
-### Bugs or Feature Requests.
+## Note
+<B>The image is not saved anywhere on the device. If you wish to save it, you can save it from the preview page. But do remeber to add necessary permissions in `info.plist` and `AndroidManifest.xml`. </B>
