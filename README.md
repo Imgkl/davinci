@@ -1,14 +1,26 @@
-# davinci
+# Davinci
+A flutter package to convert any widget to image.
 
-A flutter package to convert any widget to image
+## Preview
+<hr>
+<img src ="https://i.ibb.co/8bt4H43/ezgif-com-gif-maker.gif" width="250" height="500">
 
-## Getting Started
+## Usage
+#### Imports
+```
+import 'package:davinci/davinci.dart';
+import 'package:davinci/core/davinci_capture.dart';
+```
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+#### Pseudo code
+<img src ="https://i.ibb.co/tCgQpM3/carbon-1.png
+" width="450" height="450">
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+So by default the generated image name will be "davinci". But if you wish to change it, you can pass the image name in  DavinciCapture.click method
+```
+await DavinciCapture.click(imageKey, fileName: "Hello");
+```
+
+
+
+### Bugs or Feature Requests.
