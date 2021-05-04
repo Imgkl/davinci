@@ -23,4 +23,4 @@ await DavinciCapture.click(imageKey, fileName: "Hello");
 ```
 
 ## Note
-<B>The Generated image can be shared to other apps and chats but it is NOT stored anywhere on the device. If you wish to save it locally, you can save it from the preview page. But do remeber to add necessary permissions in `info.plist` and `AndroidManifest.xml`. </B>
+<B>The Generated image can be shared to other apps and chats but it is stored temporary storage on the device, which you can NOT access in iOS. If you wish to save it locally, you can save it from the preview page. But do remeber to add necessary permissions in `info.plist` and `AndroidManifest.xml`. </B>
