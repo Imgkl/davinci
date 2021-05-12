@@ -1,4 +1,4 @@
-# Davinci
+# Davinci ![Pub version](https://img.shields.io/pub/v/anim_search_bar) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/066e267c7beb4fcaa23ba00f2b3eb6b8)](https://www.codacy.com/gh/Imgkl/davinci/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Imgkl/davinci&amp;utm_campaign=Badge_Grade)
 <img src ="https://i.ibb.co/wJMkxM5/Oakbridge-Middle-School.png">
 <br>
 A package to convert any widget to an image which can be used to share to other apps and chats.
