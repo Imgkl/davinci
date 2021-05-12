@@ -17,9 +17,18 @@ import 'package:davinci/core/davinci_capture.dart';
 #### Pseudo code
 <img src ="https://i.ibb.co/tCgQpM3/carbon-1.png" width="500" height="450">
 
-So by default the generated image name will be "davinci". But if you wish to change it, you can pass the image name in  DavinciCapture.click method
+#### <i>If the widget, you are trying to capture is rendered in a way that you have to scroll to see the entire widget, then wrap the entire widget with `SingleChildScrollView`.</i>
+<br>
+
+By default the generated image name will be "davinci". But if you wish to change it, you can pass the image name in  DavinciCapture.click method
 ```
-await DavinciCapture.click(imageKey, fileName: "Hello");
+await DavinciCapture.click(imageKey, fileName: "Hello", pixelRatio: 1.0);
+```
+
+when the image is captured, you can either `openFilePreview` or `returnImageUint8List`, by default the `openFilePreview` is **true** and `returnImageUint8List` is **false**
+
+```
+await DavinciCapture.click(imageKey, fileName: "Hello", openFilePreview = false, returnImageUint8List = true);
 ```
 
 ## Note
