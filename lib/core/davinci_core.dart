@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class Davinci extends StatefulWidget {
   /// builder is passed along with the key.
-  final Function(GlobalKey key) builder;
+  final Function(GlobalKey key)? builder;
 
   const Davinci({this.builder});
   @override
@@ -22,7 +22,7 @@ class _DavinciState extends State<Davinci> {
       key: globalKey,
 
       /// the children is what passed in, along with the key.
-      child: widget.builder(globalKey),
+      child: widget.builder!(globalKey),
     );
   }
 }
