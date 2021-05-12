@@ -23,7 +23,7 @@ import 'package:davinci/core/davinci_capture.dart';
   
  <hr>
  By default the generated image name will be "davinci". But if you wish to change it, you can pass the image name in  DavinciCapture.click method
- 
+
 ```
 await DavinciCapture.click(imageKey, fileName: "Hello", pixelRatio: 1.0);
 ```
@@ -39,8 +39,7 @@ If the captured image is pixelated, calculate the pixel ratio dynamically based 
 ```
 double pixelRatio = MediaQuery.of(context).devicePixelRatio;
 
-await DavinciCapture.click(imageKey, fileName: "Hello", pixelRatio: pixelRatio);
-
+await DavinciCapture.click(imageKey, fileName: "Hello", pixelRatio: pixelRatio);up
 ```
 <hr>
 
