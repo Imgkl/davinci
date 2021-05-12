@@ -1,4 +1,6 @@
+import 'dart:async';
 import 'dart:io';
+import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'dart:ui' as ui;
@@ -9,17 +11,17 @@ class DavinciCapture {
   /// click method is defined.
   /// if the fileName is not set, it sets the file name as "davinci".
   static Future click(GlobalKey key, {String fileName = "davinci"}) async {
-    /// if the key is null, it returns null
-    if (key == null) return;
     try {
       /// finding the widget in the current context by the key.
-      RenderRepaintBoundary boundary = key.currentContext.findRenderObject();
+      RenderRepaintBoundary boundary =
+          key.currentContext!.findRenderObject() as RenderRepaintBoundary;
 
       /// the boundary is converted to Image.
       final image = await boundary.toImage(pixelRatio: 3);
 
       /// The raw image is converted to byte data.
-      final byteData = await image.toByteData(format: ui.ImageByteFormat.png);
+      final byteData = await (image.toByteData(format: ui.ImageByteFormat.png)
+          as FutureOr<ByteData>);
 
       /// The byteData is converted to uInt8List image aka memory Image.
       final u8Image = byteData.buffer.asUint8List();
