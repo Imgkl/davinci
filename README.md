@@ -24,14 +24,17 @@ import 'package:davinci/core/davinci_capture.dart';
  <hr>
  By default the generated image name will be "davinci". But if you wish to change it, you can pass the image name in  DavinciCapture.click method
 
+
 ```
 await DavinciCapture.click(imageKey, fileName: "Hello");
 ```
  <hr>
-When the image is captured, you can either `openFilePreview` or `returnImageUint8List`, by default the `openFilePreview` is **true** and `returnImageUint8List` is **false**
+When the image is captured, you can either open the image preview or get the image in Uint8List
+
 
 ```
 await DavinciCapture.click(imageKey, fileName: "Hello", openFilePreview = false, returnImageUint8List = true);
+
 ```
  <hr>
 If the captured image is pixelated, calculate the pixel ratio dynamically based on the device and pass it to the DavinciCapture.click method.
