@@ -1,7 +1,7 @@
 # Davinci
 <img src ="https://i.ibb.co/wJMkxM5/Oakbridge-Middle-School.png">
 <br>
-A simple flutter package to convert any widget to an image which can be used to share to other apps and chats.
+A package to convert any widget to an image which can be used to share to other apps and chats.
 
 
 ## 📹 Preview
@@ -39,7 +39,7 @@ If the captured image is pixelated, calculate the pixel ratio dynamically based 
 ```
 double pixelRatio = MediaQuery.of(context).devicePixelRatio;
 
-await DavinciCapture.click(imageKey, fileName: "Hello", pixelRatio: pixelRatio);up
+await DavinciCapture.click(imageKey, fileName: "Hello", pixelRatio: pixelRatio);
 ```
 <hr>
 
