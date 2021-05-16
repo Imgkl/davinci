@@ -18,7 +18,7 @@ import 'package:davinci/davinci.dart';
 #### Pseudo code
 
 
-| If the widget is in the widget tree | If the widget is not in the widget tree  | 
+| If the widget is in the widget tree  <br> Use `click` method| If the widget is not in the widget tree  <br> Use `offStage` method | 
 | :---: | :---: |
 | <img src ="https://i.ibb.co/tCgQpM3/carbon-1.png" width="550" height="420"> | <img src ="https://i.ibb.co/bX9tGQV/carbon-2.png" width="450" height="250"> | 
 
