@@ -5,23 +5,26 @@ A package to convert any widget to an image which can be used to share to other 
 
 
 ## 📹 Preview
-<img src ="https://i.ibb.co/8bt4H43/ezgif-com-gif-maker.gif" width="250" height="500">
+<img src ="https://i.ibb.co/7zkmKwX/ezgif-com-gif-maker.gif" width="250" height="500">
 
 ## ℹ️ Usage
 
-  <i><b> If the widget, you are trying to capture is rendered in a way that you have to scroll to see the entire widget, then wrap the entire widget with `SingleChildScrollView` and then call DavinciCapture.click method.</i> </b>
 #### Imports
 ```
-import 'package:davinci/davinci.dart';
 import 'package:davinci/core/davinci_capture.dart';
+import 'package:davinci/davinci.dart';
 ```
 
 #### Pseudo code
-<img src ="https://i.ibb.co/tCgQpM3/carbon-1.png" width="500" height="450">
 
 
-  
- <hr>
+| If the widget is in the widget tree | If the widget is not in the widget tree  | 
+| :---: | :---: |
+| <img src ="https://i.ibb.co/tCgQpM3/carbon-1.png" width="550" height="420"> | <img src ="https://i.ibb.co/bX9tGQV/carbon-2.png" width="450" height="250"> | 
+
+
+
+<hr>
  By default the generated image name will be "davinci". But if you wish to change it, you can pass the image name in  DavinciCapture.click method.
  
 ```
@@ -42,6 +45,8 @@ double pixelRatio = MediaQuery.of(context).devicePixelRatio;
 await DavinciCapture.click(imageKey, fileName: "Hello", pixelRatio: pixelRatio);
 ```
 <hr>
+
+ℹ️ <i><b>All the parameters in the `click` method is present in `offStage` method too.</i></b>
 
 ## 🛎️ Note :
 
