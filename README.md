@@ -12,8 +12,8 @@ A package to convert any widget to an image which can be used to share to other 
   <i><b> If the widget, you are trying to capture is rendered in a way that you have to scroll to see the entire widget, then wrap the entire widget with `SingleChildScrollView` and then call DavinciCapture.click method.</i> </b>
 #### Imports
 ```
+import 'package:davinci/core/davinci_capture.dart';
 import 'package:davinci/davinci.dart';
-r
 ```
 
 #### Pseudo code
