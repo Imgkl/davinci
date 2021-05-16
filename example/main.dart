@@ -57,9 +57,25 @@ class _AppState extends State<App> {
                     )),
               ),
             ),
+            TextButton(
+              onPressed: () async {
+                ///If the widget was not in the widget tree
+                ///pass the widget that has to be converted into image.
+                await DavinciCapture.offStage(PreviewWidget());
+              },
+              child: Text("Capture"),
+            )
           ],
         ),
       ),
     );
+  }
+}
+
+/// This widget is not mounted when the App is mounted.
+class PreviewWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }
