@@ -17,11 +17,14 @@ import 'package:davinci/core/davinci_capture.dart';
 ```
 
 #### Pseudo code
-<img src ="https://i.ibb.co/tCgQpM3/carbon-1.png" width="500" height="450">
 
 
-  
- <hr>
+| If the widget in the widget tree | True | False |
+| :---: | :---: | :---: |
+| Implementation | <img src ="https://i.ibb.co/tCgQpM3/carbon-1.png" width="500" height="450"> | <img src ="https://i.ibb.co/642nNZc/carbon.png" width="500" height="250"> | 
+
+
+<hr>
  By default the generated image name will be "davinci". But if you wish to change it, you can pass the image name in  DavinciCapture.click method.
  
 ```
