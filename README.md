@@ -19,9 +19,9 @@ import 'package:davinci/core/davinci_capture.dart';
 #### Pseudo code
 
 
-| If the widget in the widget tree | If the widget is not in the widget tree  | 
+| If the widget is in the widget tree | If the widget is not in the widget tree  | 
 | :---: | :---: |
-| <img src ="https://i.ibb.co/tCgQpM3/carbon-1.png" width="500" height="450"> | <img src ="https://i.ibb.co/642nNZc/carbon.png" width="500" height="250"> | 
+| <img src ="https://i.ibb.co/tCgQpM3/carbon-1.png" width="470" height="450"> | <img src ="https://i.ibb.co/642nNZc/carbon.png" width="500" height="250"> | 
 
 
 
