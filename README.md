@@ -5,7 +5,7 @@ A package to convert any widget to an image which can be used to share to other 
 
 
 ## 📹 Preview
-<img src ="https://i.ibb.co/8bt4H43/ezgif-com-gif-maker.gif" width="250" height="500">
+<img src ="https://i.ibb.co/7zkmKwX/ezgif-com-gif-maker.gif" width="250" height="500">
 
 ## ℹ️ Usage
 
@@ -46,6 +46,8 @@ double pixelRatio = MediaQuery.of(context).devicePixelRatio;
 await DavinciCapture.click(imageKey, fileName: "Hello", pixelRatio: pixelRatio);
 ```
 <hr>
+
+ℹ️ <i><b>All the parameters in the `click` method is present in `offStage` method too.</i></b>
 
 ## 🛎️ Note :
 
