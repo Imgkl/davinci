@@ -1,3 +1,7 @@
+## [2.0.1] - Added `saveToDevice` support
+
+- Added `SaveToDevice` parameter to the click and offStage method. Now the images can be directly saved to gallery/photos app.
+
 ## [2.0.0] - Added offStage support
 
 - If the widget is not mounted in the widget tree, pass the widget in the `DavinciCapture.offStage`. Huge thanks to <a href="https://github.com/christian-muertz"> Christian Muertz</a>.
