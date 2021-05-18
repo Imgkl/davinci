@@ -180,6 +180,7 @@ class DavinciCapture {
     return file;
   }
 
+  /// To save the images locally
   static _saveImageToDevice(String? album, String imageName) async {
     /// getting the temp directory of the app.
     String dir = (await getApplicationDocumentsDirectory()).path;
