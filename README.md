@@ -10,13 +10,14 @@ A package to convert any widget to an image which can be saved locally or can be
 ## ℹ️ Usage
 
 #### Prerequisites
-### iOS
+
+> on iOS
 
 Add the following keys to your _Info.plist_ file, located in `<project root>/ios/Runner/Info.plist`:
 
 * `NSPhotoLibraryUsageDescription` - describe why your app needs permission for the photo library. This is called _Privacy - Photo Library Usage Description_ in the visual editor.
 
-### Android
+> Android
 
 * `android.permission.WRITE_EXTERNAL_STORAGE` - Permission for usage of external storage
 #### Imports
