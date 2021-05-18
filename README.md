@@ -1,7 +1,7 @@
 # Davinci ![Pub version](https://img.shields.io/pub/v/davinci) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/066e267c7beb4fcaa23ba00f2b3eb6b8)](https://www.codacy.com/gh/Imgkl/davinci/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Imgkl/davinci&amp;utm_campaign=Badge_Grade)
 <img src ="https://i.ibb.co/wJMkxM5/Oakbridge-Middle-School.png">
 <br>
-A package to convert any widget to an image which can be used to share to other apps and chats.
+A package to convert any widget to an image which can be saved locally or can be shared to other apps and chats.
 
 
 ## 📹 Preview
@@ -9,6 +9,16 @@ A package to convert any widget to an image which can be used to share to other 
 
 ## ℹ️ Usage
 
+#### Prerequisites
+### iOS
+
+Add the following keys to your _Info.plist_ file, located in `<project root>/ios/Runner/Info.plist`:
+
+* `NSPhotoLibraryUsageDescription` - describe why your app needs permission for the photo library. This is called _Privacy - Photo Library Usage Description_ in the visual editor.
+
+### Android
+
+* `android.permission.WRITE_EXTERNAL_STORAGE` - Permission for usage of external storage
 #### Imports
 ```
 import 'package:davinci/core/davinci_capture.dart';
@@ -46,10 +56,16 @@ await DavinciCapture.click(imageKey, fileName: "Hello", pixelRatio: pixelRatio);
 ```
 <hr>
 
+To save the image directly to the device, set `saveToDevice` flag to `true`. You can also specify the album name or you can leave it undefined.
+
+````
+await DavinciCapture.click(imageKey, fileName: "Hello", saveToDevice = true, album: "Davinci");
+````
+<hr>
+
 ℹ️ <i><b>All the parameters in the `click` method is present in `offStage` method too.</i></b>
 
 ## 🛎️ Note :
 
  - <b>Cannot capture Platformview due to issue https://github.com/flutter/flutter/issues/25306 </b>
- - <b>The Generated image can be shared to other apps and chats but it is stored temporary storage on the device, which you can NOT access in iOS. If you wish to save it locally, you can save it from the preview page. But do remeber to add necessary permissions in `info.plist` and `AndroidManifest.xml`. 
-For more info: https://pub.dev/packages/image_gallery_saver</b>
+ - <b>If you wish to save the generated images locally, do remeber to add necessary permissions in `info.plist` and `AndroidManifest.xml`. 
