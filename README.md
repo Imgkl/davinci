@@ -17,7 +17,7 @@ Add the following keys to your _Info.plist_ file, located in `<project root>/ios
 
 * `NSPhotoLibraryUsageDescription` - describe why your app needs permission for the photo library. This is called _Privacy - Photo Library Usage Description_ in the visual editor.
 
-> Android
+> on Android
 
 * `android.permission.WRITE_EXTERNAL_STORAGE` - Permission for usage of external storage
 #### Imports
