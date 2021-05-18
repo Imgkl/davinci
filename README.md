@@ -60,7 +60,7 @@ await DavinciCapture.click(imageKey, fileName: "Hello", pixelRatio: pixelRatio);
 To save the image directly to the device, set `saveToDevice` flag to `true`. You can also specify the album name or you can leave it undefined.
 
 ````
-await DavinciCapture.click(imageKey, fileName: "Hello", saveToDevice = true, album: "Davinci");
+await DavinciCapture.click(imageKey, fileName: "Hello", saveToDevice = true, album: "Davinci", openFilePreview = false);
 ````
 <hr>
 
@@ -69,4 +69,4 @@ await DavinciCapture.click(imageKey, fileName: "Hello", saveToDevice = true, alb
 ## 🛎️ Note :
 
  - <b>Cannot capture Platformview due to issue https://github.com/flutter/flutter/issues/25306 </b>
- - <b>If you wish to save the generated images locally, do remeber to add necessary permissions in `info.plist` and `AndroidManifest.xml`. 
+ - <b>If you wish to save the generated images locally, do remember to add necessary permissions in `info.plist` and `AndroidManifest.xml`. 

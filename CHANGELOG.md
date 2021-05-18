@@ -1,3 +1,5 @@
+## [2.0.2] - updated Readme
+
 ## [2.0.1] - Added `saveToDevice` support
 
 - Added `SaveToDevice` parameter to the click and offStage method. Now the images can be directly saved to gallery/photos app.
