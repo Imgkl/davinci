@@ -4,6 +4,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:gallery_saver/gallery_saver.dart';
 import 'dart:ui' as ui;
 import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
@@ -17,8 +18,9 @@ class DavinciCapture {
       {String fileName = "davinci",
       bool openFilePreview = true,
       double pixelRatio = 3.0,
+      bool saveToDevice = false,
+      String? albumName,
       bool returnImageUint8List = false}) async {
-    assert(openFilePreview != returnImageUint8List);
     try {
       /// finding the widget in the current context by the key.
       RenderRepaintBoundary boundary =
@@ -33,12 +35,15 @@ class DavinciCapture {
       /// The byteData is converted to uInt8List image aka memory Image.
       final u8Image = byteData!.buffer.asUint8List();
 
+      if (saveToDevice) {
+        _saveImageToDevice(albumName, fileName);
+      }
+
       if (returnImageUint8List) {
         return u8Image;
       }
-
       if (openFilePreview) {
-        _openImagePreview(u8Image, fileName);
+        return _openImagePreview(u8Image, fileName);
       }
     } catch (e) {
       /// if the above process is failed, the error is printed.
@@ -57,7 +62,9 @@ class DavinciCapture {
       Size? imageSize,
       bool openFilePreview = true,
       double pixelRatio = 3.0,
+      bool saveToDevice = false,
       String fileName = "davinci",
+      String? albumName,
       bool returnImageUint8List = false}) async {
     /// finding the widget in the current context by the key.
     final RenderRepaintBoundary repaintBoundary = RenderRepaintBoundary();
@@ -136,6 +143,10 @@ class DavinciCapture {
       /// The byteData is converted to uInt8List image aka memory Image.
       final u8Image = byteData!.buffer.asUint8List();
 
+      if (saveToDevice) {
+        _saveImageToDevice(albumName, fileName);
+      }
+
       /// If the returnImageUint8List is true, return the image as uInt8List
       if (returnImageUint8List) {
         return u8Image;
@@ -167,5 +178,15 @@ class DavinciCapture {
 
     /// The file is returned.
     return file;
+  }
+
+  static _saveImageToDevice(String? album, String imageName) async {
+    /// getting the temp directory of the app.
+    String dir = (await getApplicationDocumentsDirectory()).path;
+
+    /// Saving the file with the file name in temp directory.
+    File file = new File('$dir/$imageName.png');
+
+    GallerySaver.saveImage(file.path, albumName: album);
   }
 }
