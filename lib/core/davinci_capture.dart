@@ -138,7 +138,6 @@ class DavinciCapture {
     }
   }
 
-  /// Create image Process
   static _createImageProcess(
       {saveToDevice,
       albumName,
