@@ -17,34 +17,26 @@ class DavinciCapture {
   static Future click(GlobalKey key,
       {String fileName = "davinci",
       bool openFilePreview = true,
-      double pixelRatio = 3.0,
       bool saveToDevice = false,
       String? albumName,
+      double? pixelRatio,
       bool returnImageUint8List = false}) async {
     try {
+      pixelRatio ??= ui.window.devicePixelRatio;
+
       /// finding the widget in the current context by the key.
-      RenderRepaintBoundary boundary =
+      RenderRepaintBoundary repaintBoundary =
           key.currentContext!.findRenderObject() as RenderRepaintBoundary;
 
-      /// the boundary is converted to Image.
-      final image = await boundary.toImage(pixelRatio: pixelRatio);
-
-      /// The raw image is converted to byte data.
-      final byteData = await (image.toByteData(format: ui.ImageByteFormat.png));
-
-      /// The byteData is converted to uInt8List image aka memory Image.
-      final u8Image = byteData!.buffer.asUint8List();
-
-      if (saveToDevice) {
-        _saveImageToDevice(albumName, fileName);
-      }
-
-      if (returnImageUint8List) {
-        return u8Image;
-      }
-      if (openFilePreview) {
-        return _openImagePreview(u8Image, fileName);
-      }
+      /// With the repaintBoundary we got from the context, we start the createImageProcess
+      _createImageProcess(
+          albumName: albumName,
+          fileName: fileName,
+          saveToDevice: saveToDevice,
+          returnImageUint8List: returnImageUint8List,
+          openFilePreview: openFilePreview,
+          repaintBoundary: repaintBoundary,
+          pixelRatio: pixelRatio);
     } catch (e) {
       /// if the above process is failed, the error is printed.
       print(e);
@@ -58,13 +50,11 @@ class DavinciCapture {
   /// for more info on how to do it.
   static Future offStage(Widget widget,
       {Duration? wait,
-      Size? logicalSize,
-      Size? imageSize,
       bool openFilePreview = true,
-      double pixelRatio = 3.0,
       bool saveToDevice = false,
       String fileName = "davinci",
       String? albumName,
+      double? pixelRatio,
       bool returnImageUint8List = false}) async {
     /// finding the widget in the current context by the key.
     final RenderRepaintBoundary repaintBoundary = RenderRepaintBoundary();
@@ -75,10 +65,9 @@ class DavinciCapture {
     /// create a new build owner
     final BuildOwner buildOwner = BuildOwner(focusManager: FocusManager());
 
-    logicalSize ??= ui.window.physicalSize / ui.window.devicePixelRatio;
-    imageSize ??= ui.window.physicalSize;
+    Size logicalSize = ui.window.physicalSize / ui.window.devicePixelRatio;
+    pixelRatio ??= ui.window.devicePixelRatio;
     assert(openFilePreview != returnImageUint8List);
-    assert(logicalSize.aspectRatio == imageSize.aspectRatio);
 
     try {
       final RenderView renderView = RenderView(
@@ -100,11 +89,12 @@ class DavinciCapture {
       /// setting the rootElement with the widget that has to be captured
       final RenderObjectToWidgetElement<RenderBox> rootElement =
           RenderObjectToWidgetAdapter<RenderBox>(
-              container: repaintBoundary,
-              child: Directionality(
-                textDirection: TextDirection.ltr,
-                child: widget,
-              )).attachToRenderTree(buildOwner);
+        container: repaintBoundary,
+        child: Directionality(
+          textDirection: TextDirection.ltr,
+          child: widget,
+        ),
+      ).attachToRenderTree(buildOwner);
 
       ///adding the rootElement to the buildScope
       buildOwner.buildScope(rootElement);
@@ -132,32 +122,53 @@ class DavinciCapture {
       /// Flush paint
       pipelineOwner.flushPaint();
 
-      /// the boundary is converted to Image.
-      final ui.Image image = await repaintBoundary.toImage(
-          pixelRatio: imageSize.width / logicalSize.width);
-
-      /// The raw image is converted to byte data.
-      final ByteData? byteData =
-          await image.toByteData(format: ui.ImageByteFormat.png);
-
-      /// The byteData is converted to uInt8List image aka memory Image.
-      final u8Image = byteData!.buffer.asUint8List();
-
-      if (saveToDevice) {
-        _saveImageToDevice(albumName, fileName);
-      }
-
-      /// If the returnImageUint8List is true, return the image as uInt8List
-      if (returnImageUint8List) {
-        return u8Image;
-      }
-
-      /// if the openFilePreview is true, open the image in openFile
-      if (openFilePreview) {
-        _openImagePreview(u8Image, fileName);
-      }
+      /// we start the createImageProcess once we have the repaintBoundry of
+      /// the widget we attached to the widget tree.
+      _createImageProcess(
+        saveToDevice: saveToDevice,
+        albumName: albumName,
+        fileName: fileName,
+        returnImageUint8List: returnImageUint8List,
+        openFilePreview: openFilePreview,
+        repaintBoundary: repaintBoundary,
+        pixelRatio: pixelRatio,
+      );
     } catch (e) {
       print(e);
+    }
+  }
+
+  static _createImageProcess(
+      {saveToDevice,
+      albumName,
+      fileName,
+      returnImageUint8List,
+      openFilePreview,
+      repaintBoundary,
+      pixelRatio}) async {
+    /// the boundary is converted to Image.
+    final ui.Image image =
+        await repaintBoundary.toImage(pixelRatio: pixelRatio);
+
+    /// The raw image is converted to byte data.
+    final ByteData? byteData =
+        await image.toByteData(format: ui.ImageByteFormat.png);
+
+    /// The byteData is converted to uInt8List image aka memory Image.
+    final u8Image = byteData!.buffer.asUint8List();
+
+    if (saveToDevice) {
+      _saveImageToDevice(albumName, fileName);
+    }
+
+    /// If the returnImageUint8List is true, return the image as uInt8List
+    if (returnImageUint8List) {
+      return u8Image;
+    }
+
+    /// if the openFilePreview is true, open the image in openFile
+    if (openFilePreview) {
+      _openImagePreview(u8Image, fileName);
     }
   }
 
@@ -188,6 +199,8 @@ class DavinciCapture {
     /// Saving the file with the file name in temp directory.
     File file = new File('$dir/$imageName.png');
 
+    /// The image is saved with the file path and to the album if defined,
+    /// if the album is null, it saves to the all pictures.
     GallerySaver.saveImage(file.path, albumName: album);
   }
 }
