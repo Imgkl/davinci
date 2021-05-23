@@ -1,3 +1,5 @@
+## [2.0.3] - Fixed Raw Keyboard exception
+- Thanks to<a href="https://github.com/Coronon"> Rubin Raithel</a>. PR<a href="https://github.com/Imgkl/davinci/pull/11"> #11</a>. 
 ## [2.0.2] - updated Readme
 
 ## [2.0.1] - Added `saveToDevice` support
