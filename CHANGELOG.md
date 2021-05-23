@@ -1,7 +1,7 @@
 ## [2.0.4] - same parmeters in `click` and `offStage` methods
 
  - All the parameters in the click method is now avaliable in offStage method.
- - `logicalSize` and `imageSize` parameters are removed in offStage method in favour of pixelRatio parameter.
+ - `logicalSize` and `imageSize` parameters are removed in offStage method in favour of `pixelRatio` parameter.
  - Code optimization.
 
 ## [2.0.3] - Fixed Raw Keyboard exception
