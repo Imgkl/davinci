@@ -23,7 +23,7 @@ class _AppState extends State<App> {
             Davinci(
               builder: (key) {
                 ///3. set the widget key to the globalkey
-                this.imageKey = key;
+                imageKey = key;
                 return Container(
                   height: 150,
                   width: double.infinity,
@@ -63,7 +63,7 @@ class _AppState extends State<App> {
                 ///pass the widget that has to be converted into image.
                 await DavinciCapture.offStage(PreviewWidget());
               },
-              child: Text("Capture"),
+              child: Text('Capture'),
             )
           ],
         ),

@@ -15,7 +15,7 @@ class DavinciCapture {
   /// you can define whether to openFilePreview or returnImageUint8List
   /// openFilePreview is true by default.
   static Future click(GlobalKey key,
-      {String fileName = "davinci",
+      {String fileName = 'davinci',
       bool openFilePreview = true,
       bool saveToDevice = false,
       String? albumName,
@@ -25,11 +25,11 @@ class DavinciCapture {
       pixelRatio ??= ui.window.devicePixelRatio;
 
       /// finding the widget in the current context by the key.
-      RenderRepaintBoundary repaintBoundary =
+      var repaintBoundary =
           key.currentContext!.findRenderObject() as RenderRepaintBoundary;
 
       /// With the repaintBoundary we got from the context, we start the createImageProcess
-      _createImageProcess(
+      await _createImageProcess(
           albumName: albumName,
           fileName: fileName,
           saveToDevice: saveToDevice,
@@ -52,7 +52,7 @@ class DavinciCapture {
       {Duration? wait,
       bool openFilePreview = true,
       bool saveToDevice = false,
-      String fileName = "davinci",
+      String fileName = 'davinci',
       String? albumName,
       double? pixelRatio,
       bool returnImageUint8List = false}) async {
@@ -124,7 +124,7 @@ class DavinciCapture {
 
       /// we start the createImageProcess once we have the repaintBoundry of
       /// the widget we attached to the widget tree.
-      _createImageProcess(
+      await _createImageProcess(
         saveToDevice: saveToDevice,
         albumName: albumName,
         fileName: fileName,
@@ -139,7 +139,7 @@ class DavinciCapture {
   }
 
   /// create image process
-  static _createImageProcess(
+  static Future _createImageProcess(
       {saveToDevice,
       albumName,
       fileName,
@@ -169,39 +169,38 @@ class DavinciCapture {
 
     /// if the openFilePreview is true, open the image in openFile
     if (openFilePreview) {
-      _openImagePreview(u8Image, fileName);
+      await _openImagePreview(u8Image, fileName);
     }
   }
 
-  static _openImagePreview(Uint8List u8Image, String imageName) async {
+  static Future _openImagePreview(Uint8List u8Image, String imageName) async {
     /// getting the temp directory of the app.
     String dir = (await getApplicationDocumentsDirectory()).path;
 
     /// Saving the file with the file name in temp directory.
-    File file = new File('$dir/$imageName.png');
+    File file = File('$dir/$imageName.png');
 
     /// the image file is created
     await file.writeAsBytes(u8Image);
 
     /// The image file is opened.
-    OpenFile.open(
+    await OpenFile.open(
       '$dir/$imageName.png',
     );
 
-    /// The file is returned.
     return file;
   }
 
   /// To save the images locally
-  static _saveImageToDevice(String? album, String imageName) async {
+  static void _saveImageToDevice(String? album, String imageName) async {
     /// getting the temp directory of the app.
     String dir = (await getApplicationDocumentsDirectory()).path;
 
     /// Saving the file with the file name in temp directory.
-    File file = new File('$dir/$imageName.png');
+    File file = File('$dir/$imageName.png');
 
     /// The image is saved with the file path and to the album if defined,
     /// if the album is null, it saves to the all pictures.
-    GallerySaver.saveImage(file.path, albumName: album);
+    await GallerySaver.saveImage(file.path, albumName: album);
   }
 }
