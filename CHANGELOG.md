@@ -1,3 +1,9 @@
+## [2.0.4] - same parmeters in `click` and `offStage` methods
+
+ - All the parameters in the click method is now avaliable in offStage method.
+ - `logicalSize` and `imageSize` parameters are removed in offStage method in favour of pixelRatio parameter.
+ - Code optimization.
+
 ## [2.0.3] - Fixed Raw Keyboard exception
 - Thanks to<a href="https://github.com/Coronon"> Rubin Raithel</a>. PR<a href="https://github.com/Imgkl/davinci/pull/11"> #11</a>. 
 ## [2.0.2] - updated Readme
