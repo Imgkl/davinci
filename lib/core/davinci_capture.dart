@@ -73,7 +73,7 @@ class DavinciCapture {
     final PipelineOwner pipelineOwner = PipelineOwner();
 
     /// create a new build owner
-    final BuildOwner buildOwner = BuildOwner();
+    final BuildOwner buildOwner = BuildOwner(focusManager: FocusManager());
 
     logicalSize ??= ui.window.physicalSize / ui.window.devicePixelRatio;
     imageSize ??= ui.window.physicalSize;
