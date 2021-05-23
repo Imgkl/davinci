@@ -1,4 +1,4 @@
-## [2.0.5] - code optimised using pedanticc analyzer
+## [2.0.5] - code optimised using pedantic analyzer
 
 ## [2.0.4] - same parmeters in `click` and `offStage` methods
 
