@@ -29,7 +29,7 @@ class DavinciCapture {
           key.currentContext!.findRenderObject() as RenderRepaintBoundary;
 
       /// With the repaintBoundary we got from the context, we start the createImageProcess
-      await _createImageProcess(
+      return await _createImageProcess(
           albumName: albumName,
           fileName: fileName,
           saveToDevice: saveToDevice,
@@ -124,7 +124,7 @@ class DavinciCapture {
 
       /// we start the createImageProcess once we have the repaintBoundry of
       /// the widget we attached to the widget tree.
-      await _createImageProcess(
+      return await _createImageProcess(
         saveToDevice: saveToDevice,
         albumName: albumName,
         fileName: fileName,
