@@ -29,14 +29,26 @@ class DavinciCapture {
           key.currentContext!.findRenderObject() as RenderRepaintBoundary;
 
       /// With the repaintBoundary we got from the context, we start the createImageProcess
-      await _createImageProcess(
-          albumName: albumName,
-          fileName: fileName,
-          saveToDevice: saveToDevice,
-          returnImageUint8List: returnImageUint8List,
-          openFilePreview: openFilePreview,
-          repaintBoundary: repaintBoundary,
-          pixelRatio: pixelRatio);
+      if (returnImageUint8List) {
+        Uint8List imageUint8List = await _createImageProcess(
+            albumName: albumName,
+            fileName: fileName,
+            saveToDevice: saveToDevice,
+            returnImageUint8List: returnImageUint8List,
+            openFilePreview: openFilePreview,
+            repaintBoundary: repaintBoundary,
+            pixelRatio: pixelRatio);
+        return imageUint8List;
+      } else {
+        await _createImageProcess(
+            albumName: albumName,
+            fileName: fileName,
+            saveToDevice: saveToDevice,
+            returnImageUint8List: returnImageUint8List,
+            openFilePreview: openFilePreview,
+            repaintBoundary: repaintBoundary,
+            pixelRatio: pixelRatio);
+      }
     } catch (e) {
       /// if the above process is failed, the error is printed.
       print(e);
@@ -124,15 +136,28 @@ class DavinciCapture {
 
       /// we start the createImageProcess once we have the repaintBoundry of
       /// the widget we attached to the widget tree.
-      await _createImageProcess(
-        saveToDevice: saveToDevice,
-        albumName: albumName,
-        fileName: fileName,
-        returnImageUint8List: returnImageUint8List,
-        openFilePreview: openFilePreview,
-        repaintBoundary: repaintBoundary,
-        pixelRatio: pixelRatio,
-      );
+      if (returnImageUint8List) {
+        Uint8List imageUint8List = await _createImageProcess(
+          saveToDevice: saveToDevice,
+          albumName: albumName,
+          fileName: fileName,
+          returnImageUint8List: returnImageUint8List,
+          openFilePreview: openFilePreview,
+          repaintBoundary: repaintBoundary,
+          pixelRatio: pixelRatio,
+        );
+        return imageUint8List;
+      } else {
+        await _createImageProcess(
+          saveToDevice: saveToDevice,
+          albumName: albumName,
+          fileName: fileName,
+          returnImageUint8List: returnImageUint8List,
+          openFilePreview: openFilePreview,
+          repaintBoundary: repaintBoundary,
+          pixelRatio: pixelRatio,
+        );
+      }
     } catch (e) {
       print(e);
     }
