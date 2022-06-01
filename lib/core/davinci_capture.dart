@@ -124,15 +124,28 @@ class DavinciCapture {
 
       /// we start the createImageProcess once we have the repaintBoundry of
       /// the widget we attached to the widget tree.
-      await _createImageProcess(
-        saveToDevice: saveToDevice,
-        albumName: albumName,
-        fileName: fileName,
-        returnImageUint8List: returnImageUint8List,
-        openFilePreview: openFilePreview,
-        repaintBoundary: repaintBoundary,
-        pixelRatio: pixelRatio,
-      );
+      if (returnImageUint8List) {
+        Uint8List n = await _createImageProcess(
+          saveToDevice: saveToDevice,
+          albumName: albumName,
+          fileName: fileName,
+          returnImageUint8List: returnImageUint8List,
+          openFilePreview: openFilePreview,
+          repaintBoundary: repaintBoundary,
+          pixelRatio: pixelRatio,
+        );
+        return n;
+      } else {
+        await _createImageProcess(
+          saveToDevice: saveToDevice,
+          albumName: albumName,
+          fileName: fileName,
+          returnImageUint8List: returnImageUint8List,
+          openFilePreview: openFilePreview,
+          repaintBoundary: repaintBoundary,
+          pixelRatio: pixelRatio,
+        );
+      }
     } catch (e) {
       print(e);
     }
