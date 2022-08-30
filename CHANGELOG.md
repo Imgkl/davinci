@@ -1,3 +1,5 @@
+## [2.0.6] - `returnImageUint8List` was broken before and now it's fixed. Silly mistake of not adding a `return` statement 🙈.  
+
 ## [2.0.5] - code optimised using pedantic analyzer
 
 ## [2.0.4] - same parmeters in `click` and `offStage` methods

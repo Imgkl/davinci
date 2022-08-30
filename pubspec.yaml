@@ -1,6 +1,6 @@
 name: davinci
 description: A package to convert any widget to an image which can be saved locally or can be shared to other apps and chats.
-version: 2.0.5
+version: 2.0.6
 homepage: https://github.com/Imgkl/davinci
 
 environment:
