@@ -1,4 +1,5 @@
 ## [2.0.6] - `returnImageUint8List` was broken before and now it's fixed. Silly mistake of not adding a `return` statement 🙈.  
+- Thanks to<a href="https://github.com/gsoykan"> gsoykan</a>. PR<a href="https://github.com/Imgkl/davinci/pull/22"> #22</a>. 
 
 ## [2.0.5] - code optimised using pedantic analyzer
 
@@ -9,7 +10,7 @@
  - Code optimization.
 
 ## [2.0.3] - Fixed Raw Keyboard exception
-- Thanks to<a href="https://github.com/Coronon"> Rubin Raithel</a>. PR<a href="https://github.com/Imgkl/davinci/pull/11"> #11</a>. 
+- Thanks to<a href="https://github.com/Coron on"> Rubin Raithel</a>. PR<a href="https://github.com/Imgkl/davinci/pull/11"> #11</a>. 
 ## [2.0.2] - updated Readme
 
 ## [2.0.1] - Added `saveToDevice` support
