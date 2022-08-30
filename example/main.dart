@@ -1,5 +1,4 @@
 import 'package:davinci/davinci.dart';
-import 'package:davinci/core/davinci_capture.dart';
 import 'package:flutter/material.dart';
 
 class App extends StatefulWidget {
