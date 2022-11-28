@@ -1,3 +1,4 @@
+## [2.0.7] - Updated `openFile` obsolete package with better alternative.
 ## [2.0.6] - `returnImageUint8List` was broken before and now it's fixed. Silly mistake of not adding a `return` statement 🙈.  
 - Thanks to<a href="https://github.com/gsoykan"> gsoykan</a>. PR<a href="https://github.com/Imgkl/davinci/pull/22"> #22</a>. 
 
