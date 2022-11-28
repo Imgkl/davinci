@@ -8,7 +8,7 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> {
   ///1.create a globalkey variable
-  GlobalKey imageKey;
+  GlobalKey? imageKey;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +48,7 @@ class _AppState extends State<App> {
               child: TextButton(
                 onPressed: () async {
                   ///4. pass the globalKey varible to DavinciCapture.click.
-                  await DavinciCapture.click(imageKey);
+                  await DavinciCapture.click(imageKey!);
                 },
                 child: Text('capture',
                     style: TextStyle(
