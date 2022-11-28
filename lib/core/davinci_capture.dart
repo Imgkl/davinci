@@ -67,8 +67,6 @@ class DavinciCapture {
 
     Size logicalSize = ui.window.physicalSize / ui.window.devicePixelRatio;
     pixelRatio ??= ui.window.devicePixelRatio;
-    assert(openFilePreview != returnImageUint8List);
-
     try {
       final RenderView renderView = RenderView(
         window: ui.window,

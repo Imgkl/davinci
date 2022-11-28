@@ -1,16 +1,24 @@
-## [2.0.7] - Updated `openFile` obsolete package with better alternative.
-## [2.0.6] - `returnImageUint8List` was broken before and now it's fixed. Silly mistake of not adding a `return` statement 🙈.  
+## [2.0.8]
+- Fixed saving of offstage widgets to device without opening the preview (Issue <a href="https://github.com/Imgkl/davinci/issues/18"> #18</a>)
+
+## [2.0.7]
+- Updated `openFile` obsolete package with better alternative.
+
+## [2.0.6] 
+- `returnImageUint8List` was broken before and now it's fixed. Silly mistake of not adding a `return` statement 🙈.  
 - Thanks to<a href="https://github.com/gsoykan"> gsoykan</a>. PR<a href="https://github.com/Imgkl/davinci/pull/22"> #22</a>. 
 
-## [2.0.5] - code optimised using pedantic analyzer
+## [2.0.5] 
+- code optimised using pedantic analyzer
 
-## [2.0.4] - same parmeters in `click` and `offStage` methods
-
+## [2.0.4] 
+ - unified parmeters in `click` and `offStage` methods
  - All the parameters in the click method is now avaliable in offStage method.
  - `logicalSize` and `imageSize` parameters are removed in offStage method in favour of `pixelRatio` parameter.
  - Code optimization.
 
-## [2.0.3] - Fixed Raw Keyboard exception
+## [2.0.3] 
+- Fixed Raw Keyboard exception
 - Thanks to<a href="https://github.com/Coron on"> Rubin Raithel</a>. PR<a href="https://github.com/Imgkl/davinci/pull/11"> #11</a>. 
 ## [2.0.2] - updated Readme
 
