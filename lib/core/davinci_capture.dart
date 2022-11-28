@@ -6,7 +6,7 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:gallery_saver/gallery_saver.dart';
-import 'package:open_file/open_file.dart';
+import 'package:open_filex/open_filex.dart';
 import 'package:path_provider/path_provider.dart';
 
 class DavinciCapture {
@@ -184,7 +184,7 @@ class DavinciCapture {
     await file.writeAsBytes(u8Image);
 
     /// The image file is opened.
-    await OpenFile.open(
+    await OpenFilex.open(
       '$dir/$imageName.png',
     );
 
