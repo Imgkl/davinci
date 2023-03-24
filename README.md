@@ -35,7 +35,35 @@ import 'package:davinci/davinci.dart';
 | :---: | :---: |
 | <img src ="https://i.ibb.co/tCgQpM3/carbon-1.png" width="550" height="420"> | <img src ="https://i.ibb.co/bX9tGQV/carbon-2.png" width="450" height="250"> | 
 
+<hr>
+<b> <h3> Dynaimc Branding footer </h3> </b>
 
+Dynamic branding footer can be added to widgets that can be added to off-stage widgets. 
+
+ℹ️ <i><b>This branding footer (````brandTag```` parameter) is currrently available only on ````offStage```` method. For ````click```` method, it'll be added soon.</i></b>
+
+Branding footer can be added like this.
+
+````
+                await DavinciCapture.offStage(
+                  const PreviewWidget(),
+
+                  /// Footer can be dynamically added for offStage Widgets
+                  brandTag: BrandTagConfiguration(
+                    padding: const EdgeInsets.only(left: 20, right: 20),
+                    decoration: const BoxDecoration(color: Colors.black),
+                    leading: const Text(
+                      "Footer dyamically added, Inspired from Reddit",
+                      style: TextStyle(fontSize: 14),
+                    ),
+                    trailing: const Icon(
+                      LineIcons.redditAlien,
+                      color: Color(0xffFF4500),
+                    ),
+                  ),
+                );
+````
+<img src ="https://i.ibb.co/ccWpFqX/Screenshot-2023-03-24-at-5-46-15-PM.png" width="500"> 
 
 <hr>
  By default the generated image name will be "davinci". But if you wish to change it, you can pass the image name in  DavinciCapture.click method.
@@ -69,6 +97,4 @@ await DavinciCapture.click(imageKey, fileName: "Hello", saveToDevice = true, alb
 ℹ️ <i><b>All the parameters in the `click` method is present in `offStage` method too.</i></b>
 
 ## 🛎️ Note :
-
- - <b>Cannot capture Platformview due to issue https://github.com/flutter/flutter/issues/25306 </b>
  - <b>If you wish to save the generated images locally, do remember to add necessary permissions in `info.plist` and `AndroidManifest.xml`. 
