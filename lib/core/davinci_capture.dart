@@ -160,8 +160,7 @@ class DavinciCapture {
       bool? returnImageUint8List,
       bool? openFilePreview,
       RenderRepaintBoundary? repaintBoundary,
-      double? pixelRatio,
-      BrandTagConfiguration? brandTag}) async {
+      double? pixelRatio}) async {
     // the boundary is converted to Image.
 
     final ui.Image image =
@@ -173,16 +172,6 @@ class DavinciCapture {
 
     /// The byteData is converted to uInt8List image aka memory Image.
     final Uint8List u8Image = byteData!.buffer.asUint8List();
-
-    if (brandTag != null && source == _Source.click) {
-      Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.memory(u8Image),
-          BrandTagBuilder(tagConfiguration: brandTag),
-        ],
-      );
-    }
 
     if (saveToDevice!) {
       _saveImageToDevice(albumName, fileName!);

@@ -1,4 +1,4 @@
-## [2.0.9]
+## [2.0.10]
 - Added Dynamic footer for ````offStage```` method, check out the readme on how to use this.
 ## [2.0.8]
 - Fixed saving of offstage widgets to device without opening the preview (Issue <a href="https://github.com/Imgkl/davinci/issues/18"> #18</a>)

@@ -29,6 +29,7 @@ class Davinci extends StatelessWidget {
 }
 
 class BrandTagBuilder extends StatelessWidget {
+  /// Pass the BrandTagConfiguration to build the brand footer
   final BrandTagConfiguration tagConfiguration;
 
   BrandTagBuilder({key, required this.tagConfiguration});
@@ -38,13 +39,18 @@ class BrandTagBuilder extends StatelessWidget {
     return Column(
       children: [
         Container(
+          // From the tagConfiguration we take padding
           padding: tagConfiguration.padding,
+          // From the tagConfiguration we take decoration
           decoration: tagConfiguration.decoration,
+          // From the tagConfiguration we take height
           height: tagConfiguration.height,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              // From the tagConfiguration we take leading
               tagConfiguration.leading,
+              // From the tagConfiguration we take trailing
               tagConfiguration.trailing,
             ],
           ),
