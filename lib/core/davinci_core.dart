@@ -1,8 +1,11 @@
+import 'package:davinci/core/brandtag_configuration.dart';
 import 'package:flutter/material.dart';
 
 class Davinci extends StatelessWidget {
   /// builder is passed along with the key.
   final Function(GlobalKey key)? builder;
+
+  /// Added brand configuration to the davinci
 
   const Davinci({this.builder});
 
@@ -21,6 +24,32 @@ class Davinci extends StatelessWidget {
 
       /// the children is what passed in, along with the key.
       child: builder!(globalKey),
+    );
+  }
+}
+
+class BrandTagBuilder extends StatelessWidget {
+  final BrandTagConfiguration tagConfiguration;
+
+  BrandTagBuilder({key, required this.tagConfiguration});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          padding: tagConfiguration.padding,
+          decoration: tagConfiguration.decoration,
+          height: tagConfiguration.height,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              tagConfiguration.leading,
+              tagConfiguration.trailing,
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

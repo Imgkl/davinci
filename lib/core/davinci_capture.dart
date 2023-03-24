@@ -3,14 +3,18 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 
+import 'package:davinci/core/brandtag_configuration.dart';
+import 'package:davinci/core/davinci_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:gallery_saver/gallery_saver.dart';
 import 'package:open_filex/open_filex.dart';
 import 'package:path_provider/path_provider.dart';
 
+enum _Source { click, offStage }
+
 class DavinciCapture {
-  /// * If the widget is in the widget tree, use this method.
+  /// If the widget is in the widget tree, use this method.
   /// if the fileName is not set, it sets the file name as "davinci".
   /// you can define whether to openFilePreview or returnImageUint8List
   /// openFilePreview is true by default.
@@ -24,19 +28,21 @@ class DavinciCapture {
     try {
       pixelRatio ??= ui.window.devicePixelRatio;
 
-      /// finding the widget in the current context by the key.
-      var repaintBoundary =
+      // finding the widget in the current context by the key.
+      RenderRepaintBoundary repaintBoundary =
           key.currentContext!.findRenderObject() as RenderRepaintBoundary;
 
       /// With the repaintBoundary we got from the context, we start the createImageProcess
       return await _createImageProcess(
-          albumName: albumName,
-          fileName: fileName,
-          saveToDevice: saveToDevice,
-          returnImageUint8List: returnImageUint8List,
-          openFilePreview: openFilePreview,
-          repaintBoundary: repaintBoundary,
-          pixelRatio: pixelRatio);
+        albumName: albumName,
+        source: _Source.click,
+        fileName: fileName,
+        saveToDevice: saveToDevice,
+        returnImageUint8List: returnImageUint8List,
+        openFilePreview: openFilePreview,
+        repaintBoundary: repaintBoundary,
+        pixelRatio: pixelRatio,
+      );
     } catch (e) {
       /// if the above process is failed, the error is printed.
       print(e);
@@ -55,6 +61,7 @@ class DavinciCapture {
       String fileName = 'davinci',
       String? albumName,
       double? pixelRatio,
+      BrandTagConfiguration? brandTag,
       bool returnImageUint8List = false}) async {
     /// finding the widget in the current context by the key.
     final RenderRepaintBoundary repaintBoundary = RenderRepaintBoundary();
@@ -90,7 +97,15 @@ class DavinciCapture {
         container: repaintBoundary,
         child: Directionality(
           textDirection: TextDirection.ltr,
-          child: widget,
+          child: Column(
+            // image is center aligned
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              widget,
+              // if the brandTag is available, it's gets added as footer
+              if (brandTag != null) BrandTagBuilder(tagConfiguration: brandTag),
+            ],
+          ),
         ),
       ).attachToRenderTree(buildOwner);
 
@@ -123,14 +138,14 @@ class DavinciCapture {
       /// we start the createImageProcess once we have the repaintBoundry of
       /// the widget we attached to the widget tree.
       return await _createImageProcess(
-        saveToDevice: saveToDevice,
-        albumName: albumName,
-        fileName: fileName,
-        returnImageUint8List: returnImageUint8List,
-        openFilePreview: openFilePreview,
-        repaintBoundary: repaintBoundary,
-        pixelRatio: pixelRatio,
-      );
+          saveToDevice: saveToDevice,
+          albumName: albumName,
+          fileName: fileName,
+          returnImageUint8List: returnImageUint8List,
+          source: _Source.offStage,
+          openFilePreview: openFilePreview,
+          repaintBoundary: repaintBoundary,
+          pixelRatio: pixelRatio);
     } catch (e) {
       print(e);
     }
@@ -138,36 +153,49 @@ class DavinciCapture {
 
   /// create image process
   static Future _createImageProcess(
-      {saveToDevice,
-      albumName,
-      fileName,
-      returnImageUint8List,
-      openFilePreview,
-      repaintBoundary,
-      pixelRatio}) async {
-    /// the boundary is converted to Image.
+      {bool? saveToDevice,
+      String? albumName,
+      String? fileName,
+      required _Source source,
+      bool? returnImageUint8List,
+      bool? openFilePreview,
+      RenderRepaintBoundary? repaintBoundary,
+      double? pixelRatio,
+      BrandTagConfiguration? brandTag}) async {
+    // the boundary is converted to Image.
+
     final ui.Image image =
-        await repaintBoundary.toImage(pixelRatio: pixelRatio);
+        await repaintBoundary!.toImage(pixelRatio: pixelRatio!);
 
     /// The raw image is converted to byte data.
     final ByteData? byteData =
         await image.toByteData(format: ui.ImageByteFormat.png);
 
     /// The byteData is converted to uInt8List image aka memory Image.
-    final u8Image = byteData!.buffer.asUint8List();
+    final Uint8List u8Image = byteData!.buffer.asUint8List();
 
-    if (saveToDevice) {
-      _saveImageToDevice(albumName, fileName);
+    if (brandTag != null && source == _Source.click) {
+      Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.memory(u8Image),
+          BrandTagBuilder(tagConfiguration: brandTag),
+        ],
+      );
+    }
+
+    if (saveToDevice!) {
+      _saveImageToDevice(albumName, fileName!);
     }
 
     /// If the returnImageUint8List is true, return the image as uInt8List
-    if (returnImageUint8List) {
+    if (returnImageUint8List!) {
       return u8Image;
     }
 
     /// if the openFilePreview is true, open the image in openFile
-    if (openFilePreview) {
-      await _openImagePreview(u8Image, fileName);
+    if (openFilePreview!) {
+      await _openImagePreview(u8Image, fileName!);
     }
   }
 
