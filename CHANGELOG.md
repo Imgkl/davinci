@@ -1,3 +1,5 @@
+## [2.1.01]
+- Readme update.
 ## [2.1.0]
 - Added support for Dart 3 and Flutter 3.10
 - Passing context in required now in the `click` and `offStage` methods, this is due to some deprecated methods in Flutter version 3.10
