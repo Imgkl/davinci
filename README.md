@@ -11,6 +11,8 @@ A package to convert any widget to an image which can be saved locally or can be
 
 ## ℹ️ Usage
 
+:warning: From version 2.1.0, passing context in required now in the click and offStage methods, this is due to some deprecated methods in Flutter version 3.10
+
 #### Prerequisites
 
 > on iOS
