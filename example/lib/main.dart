@@ -68,7 +68,8 @@ class AppState extends State<App> {
                 ),
                 onPressed: () async {
                   ///4. pass the globalKey varible to DavinciCapture.click.
-                  await DavinciCapture.click(imageKey!);
+                  await DavinciCapture.click(
+                      context: context, imageKey!, pixelRatio: 3);
                 },
                 child: const Text('Capture widget in screen',
                     style: TextStyle(
@@ -83,7 +84,8 @@ class AppState extends State<App> {
               onPressed: () async {
                 ///If the widget was not in the widget tree or not present on the screen
                 ///pass the widget that has to be converted into image.
-                await DavinciCapture.offStage(const PreviewWidget());
+                await DavinciCapture.offStage(
+                    context: context, const PreviewWidget());
               },
               child: const Text('Capture widget off-stage'),
             ),
@@ -96,6 +98,7 @@ class AppState extends State<App> {
                 ///pass the widget that has to be converted into image.
                 ///Also we can add footer to the widgets to offStage widgets as well
                 await DavinciCapture.offStage(
+                  context: context,
                   const PreviewWidget(),
 
                   /// Footer can be dynamically added for offStage Widgets

@@ -18,15 +18,17 @@ class DavinciCapture {
   /// if the fileName is not set, it sets the file name as "davinci".
   /// you can define whether to openFilePreview or returnImageUint8List
   /// openFilePreview is true by default.
+  /// Context is required.
   static Future click(GlobalKey key,
       {String fileName = 'davinci',
+      required BuildContext context,
       bool openFilePreview = true,
       bool saveToDevice = false,
       String? albumName,
       double? pixelRatio,
       bool returnImageUint8List = false}) async {
     try {
-      pixelRatio ??= ui.window.devicePixelRatio;
+      pixelRatio ??= View.of(context).devicePixelRatio;
 
       // finding the widget in the current context by the key.
       RenderRepaintBoundary repaintBoundary =
@@ -54,6 +56,7 @@ class DavinciCapture {
   /// you can define whether to openFilePreview or returnImageUint8List
   /// If the image is blurry, calculate the pixelratio dynamically. See the readme
   /// for more info on how to do it.
+  /// Context is required.
   static Future offStage(Widget widget,
       {Duration? wait,
       bool openFilePreview = true,
@@ -61,6 +64,7 @@ class DavinciCapture {
       String fileName = 'davinci',
       String? albumName,
       double? pixelRatio,
+      required BuildContext context,
       BrandTagConfiguration? brandTag,
       bool returnImageUint8List = false}) async {
     /// finding the widget in the current context by the key.
@@ -72,11 +76,12 @@ class DavinciCapture {
     /// create a new build owner
     final BuildOwner buildOwner = BuildOwner(focusManager: FocusManager());
 
-    Size logicalSize = ui.window.physicalSize / ui.window.devicePixelRatio;
-    pixelRatio ??= ui.window.devicePixelRatio;
+    Size logicalSize =
+        View.of(context).physicalSize / View.of(context).devicePixelRatio;
+    pixelRatio ??= View.of(context).devicePixelRatio;
     try {
       final RenderView renderView = RenderView(
-        window: ui.window,
+        view: View.of(context),
         child: RenderPositionedBox(
             alignment: Alignment.center, child: repaintBoundary),
         configuration: ViewConfiguration(
