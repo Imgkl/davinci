@@ -1,4 +1,7 @@
 # Davinci ![Supported Platforms](https://img.shields.io/badge/platforms-Android%20%7C%20iOS-green.svg) ![Pub version](https://img.shields.io/pub/v/davinci) ![MIT Lisence](https://img.shields.io/badge/license-MIT-blue.svg) ![linter](https://img.shields.io/badge/style-pedantic-blue) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/066e267c7beb4fcaa23ba00f2b3eb6b8)](https://www.codacy.com/gh/Imgkl/davinci/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Imgkl/davinci&amp;utm_campaign=Badge_Grade) ![PR's welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 <img src ="https://i.ibb.co/wJMkxM5/Oakbridge-Middle-School.png"> 
 
 
@@ -105,6 +108,20 @@ await DavinciCapture.click(context: context, imageKey, fileName: "Hello", saveTo
 ## Contributors
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="http://gokula.dev"><img src="https://avatars.githubusercontent.com/u/25414681?v=4?s=100" width="100px;" alt="Sai Gokula Krishnan"/><br /><sub><b>Sai Gokula Krishnan</b></sub></a><br /><a href="https://github.com/Imgkl/davinci/commits?author=Imgkl" title="Code">💻</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
 
