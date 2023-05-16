@@ -11,7 +11,7 @@ A package to convert any widget to an image which can be saved locally or can be
 
 ## ℹ️ Usage
 
-:warning: From version 2.1.0, passing context in required now in the click and offStage methods, this is due to some deprecated methods in Flutter version 3.10
+:warning: From version 2.1.0, passing `context` in required now in the `click` and `offStage` methods, this is due to some deprecated methods in Flutter version 3.10
 
 #### Prerequisites
 
@@ -48,6 +48,7 @@ Branding footer can be added like this.
 
 ````
                 await DavinciCapture.offStage(
+                  context: context,
                   const PreviewWidget(),
 
                   /// Footer can be dynamically added for offStage Widgets
@@ -71,13 +72,13 @@ Branding footer can be added like this.
  By default the generated image name will be "davinci". But if you wish to change it, you can pass the image name in  DavinciCapture.click method.
  
 ```
-await DavinciCapture.click(imageKey, fileName: "Hello");
+await DavinciCapture.click(context: context, imageKey, fileName: "Hello");
 ```
 <hr>
 When the image is captured, you can either open the image preview or get the image in Uint8List.
 
 ```
-await DavinciCapture.click(imageKey, fileName: "Hello", openFilePreview = false, returnImageUint8List = true);
+await DavinciCapture.click(context: context, imageKey, fileName: "Hello", openFilePreview = false, returnImageUint8List = true);
 ```
  <hr>
 If the captured image is pixelated, calculate the pixel ratio dynamically based on the device and pass it to the DavinciCapture.click method.
@@ -85,14 +86,14 @@ If the captured image is pixelated, calculate the pixel ratio dynamically based 
 ```
 double pixelRatio = MediaQuery.of(context).devicePixelRatio;
 
-await DavinciCapture.click(imageKey, fileName: "Hello", pixelRatio: pixelRatio);
+await DavinciCapture.click(context: context, imageKey, fileName: "Hello", pixelRatio: pixelRatio);
 ```
 <hr>
 
 To save the image directly to the device, set `saveToDevice` flag to `true`. You can also specify the album name or you can leave it undefined.
 
 ````
-await DavinciCapture.click(imageKey, fileName: "Hello", saveToDevice = true, album: "Davinci", openFilePreview = false);
+await DavinciCapture.click(context: context, imageKey, fileName: "Hello", saveToDevice = true, album: "Davinci", openFilePreview = false);
 ````
 <hr>
 
