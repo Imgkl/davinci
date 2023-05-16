@@ -101,3 +101,14 @@ await DavinciCapture.click(context: context, imageKey, fileName: "Hello", saveTo
 
 ## 🛎️ Note :
  - <b>If you wish to save the generated images locally, do remember to add necessary permissions in `info.plist` and `AndroidManifest.xml`. 
+
+## Contributors
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
