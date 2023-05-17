@@ -1,4 +1,4 @@
-## [2.1.01]
+## [2.1.1]
 - Readme update.
 ## [2.1.0]
 - Added support for Dart 3 and Flutter 3.10
