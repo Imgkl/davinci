@@ -28,22 +28,24 @@
 ## [2.0.3] 
 - Fixed Raw Keyboard exception
 - Thanks to<a href="https://github.com/Coron on"> Rubin Raithel</a>. PR<a href="https://github.com/Imgkl/davinci/pull/11"> #11</a>. 
-## [2.0.2] - updated Readme
+## [2.0.2]
+ - updated Readme
 
-## [2.0.1] - Added `saveToDevice` support
-
+## [2.0.1]
 - Added `SaveToDevice` parameter to the click and offStage method. Now the images can be directly saved to gallery/photos app.
 
-## [2.0.0] - Added offStage support
+## [2.0.0]
 
 - If the widget is not mounted in the widget tree, pass the widget in the `DavinciCapture.offStage`. Huge thanks to <a href="https://github.com/christian-muertz"> Christian Muertz</a>.
 
-## [1.0.5] - Added capture parameters
+## [1.0.5]
 
 - The pixelRatio can be user defined instead of the static value 3.
 - when the image is captured, you can either `openFilePreview` or `returnImageUint8List`
 - Minor bug fixes
 
-## [1.0.0] - Null safety support
+## [1.0.0] 
+- Null safety support
 
-## [0.0.3] - Initial Release
+## [0.0.3] 
+- Initial Release
