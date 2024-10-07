@@ -69,7 +69,13 @@ class AppState extends State<App> {
                 onPressed: () async {
                   ///4. pass the globalKey varible to DavinciCapture.click.
                   await DavinciCapture.click(
-                      context: context, imageKey!, pixelRatio: 3);
+                    context: context,
+                    imageKey!,
+                    pixelRatio: 3,
+                    saveToDevice: true,
+                    openFilePreview: false,
+                    albumName: "Davinci",
+                  );
                 },
                 child: const Text('Capture widget in screen',
                     style: TextStyle(

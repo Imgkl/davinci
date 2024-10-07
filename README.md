@@ -97,7 +97,7 @@ await DavinciCapture.click(context: context, imageKey, fileName: "Hello", saveTo
 ````
 <hr>
 
-ℹ️ <i><b>All the parameters in the `click` method is present in `offStage` method too.</i></b>
+ℹ️ <i><b>All the parameters in the `click` method is present in `offStage` method except `brandTag` prop.</i></b>
 
 ## 🛎️ Note :
  - <b>If you wish to save the generated images locally, do remember to add necessary permissions in `info.plist` and `AndroidManifest.xml`. 

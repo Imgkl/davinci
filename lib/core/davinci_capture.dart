@@ -1,13 +1,13 @@
 import 'dart:async';
 import 'dart:io';
-import 'dart:typed_data';
 import 'dart:ui' as ui;
 
 import 'package:davinci/core/brandtag_configuration.dart';
 import 'package:davinci/core/davinci_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:gallery_saver/gallery_saver.dart';
+import 'package:gal/gal.dart';
 import 'package:open_filex/open_filex.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -80,22 +80,43 @@ class DavinciCapture {
         View.of(context).physicalSize / View.of(context).devicePixelRatio;
     pixelRatio ??= View.of(context).devicePixelRatio;
     try {
-      final RenderView renderView = RenderView(
-        view: View.of(context),
-        child: RenderPositionedBox(
-            alignment: Alignment.center, child: repaintBoundary),
-        configuration: ViewConfiguration(
-          logicalConstraints: BoxConstraints(
-            maxWidth: logicalSize.width,
-            maxHeight: logicalSize.height,
+      final RenderView renderView;
+      if (kIsWeb) {
+        renderView = RenderView(
+          view: ui.PlatformDispatcher.instance.implicitView!,
+          child: RenderPositionedBox(
+            alignment: Alignment.center,
+            child: repaintBoundary,
           ),
-          physicalConstraints: BoxConstraints(
-            maxWidth: logicalSize.width,
-            maxHeight: logicalSize.height,
+          configuration: ViewConfiguration(
+            //size: logicalSize,
+            logicalConstraints: BoxConstraints(
+              minWidth: logicalSize.width,
+              maxWidth: logicalSize.width,
+              minHeight: logicalSize.height,
+              maxHeight: logicalSize.height,
+            ),
+            devicePixelRatio: 1.0,
           ),
-          devicePixelRatio: 1.0,
-        ),
-      );
+        );
+      } else {
+        renderView = RenderView(
+          view: View.of(context),
+          child: RenderPositionedBox(
+              alignment: Alignment.center, child: repaintBoundary),
+          configuration: ViewConfiguration(
+            logicalConstraints: BoxConstraints(
+              maxWidth: logicalSize.width,
+              maxHeight: logicalSize.height,
+            ),
+            physicalConstraints: BoxConstraints(
+              maxWidth: logicalSize.width,
+              maxHeight: logicalSize.height,
+            ),
+            devicePixelRatio: 1.0,
+          ),
+        );
+      }
 
       /// setting the rootNode to the renderview of the widget
       pipelineOwner.rootNode = renderView;
@@ -202,7 +223,11 @@ class DavinciCapture {
 
   static Future _openImagePreview(Uint8List u8Image, String imageName) async {
     /// getting the temp directory of the app.
-    String dir = (await getApplicationDocumentsDirectory()).path;
+
+    String dir = (kIsWeb
+            ? await getDownloadsDirectory()
+            : await getApplicationDocumentsDirectory())!
+        .path;
 
     /// Saving the file with the file name in temp directory.
     File file = File('$dir/$imageName.png');
@@ -221,13 +246,16 @@ class DavinciCapture {
   /// To save the images locally
   static void _saveImageToDevice(String? album, String imageName) async {
     /// getting the temp directory of the app.
-    String dir = (await getApplicationDocumentsDirectory()).path;
+    String dir = (kIsWeb
+            ? await getDownloadsDirectory()
+            : await getApplicationDocumentsDirectory())!
+        .path;
 
     /// Saving the file with the file name in temp directory.
     File file = File('$dir/$imageName.png');
 
     /// The image is saved with the file path and to the album if defined,
     /// if the album is null, it saves to the all pictures.
-    await GallerySaver.saveImage(file.path, albumName: album);
+    await Gal.putImage(file.path, album: album);
   }
 }
