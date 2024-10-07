@@ -13,7 +13,7 @@
 *Feel free to test it on other platforms and report back with your findings!* 🚀
 
 ## 📹 Preview
-<img src="https://i.ibb.co/7zkmKwX/ezgif-com-gif-maker.gif" width="250" height="500">
+<img src="https://i.ibb.co/3c4MkNK/screen-20241007-171726-ezgif-com-video-to-gif-converter.gif" height="500">
 
 ### Prerequisites
 
