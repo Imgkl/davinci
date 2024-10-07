@@ -1,6 +1,6 @@
 name: davinci
 description: A package to convert any widget to an image which can be saved locally or can be shared to other apps and chats.
-version: 2.5.0
+version: 2.5.1
 homepage: https://gokula.dev
 repository: https://github.com/Imgkl/Davinci
 issue_tracker: https://github.com/Imgkl/Davinci/issues

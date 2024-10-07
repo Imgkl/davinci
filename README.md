@@ -15,7 +15,7 @@
 ## 📹 Preview
 <img src="https://i.ibb.co/3c4MkNK/screen-20241007-171726-ezgif-com-video-to-gif-converter.gif" height="500">
 
-### Prerequisites
+## Prerequisites
 
 **For iOS**  
 Add the following keys to your _Info.plist_ file, located in `<project root>/ios/Runner/Info.plist`:
@@ -45,7 +45,7 @@ import 'package:davinci/davinci.dart';
 
 <hr>
 
-### 🎨 Customization
+## 🎨 Customization
 <img src="https://i.ibb.co/48byC4m/props.png">
 
 ℹ️ <i><b>All the parameters in the `click` method are present in the `offStage` method except the `brandTag` prop.</i></b>
