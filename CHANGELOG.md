@@ -1,6 +1,7 @@
 ## [2.5.0]
 - Closes <a href="https://github.com/Imgkl/davinci/issues/18"> #18</a>
 - Updated support to latest Flutter SDK
+- Updated Readme.
 
 ## [2.1.1]
 - Readme update.
